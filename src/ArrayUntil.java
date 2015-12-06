@@ -87,26 +87,29 @@ public class ArrayUntil {
         }
     }
 
-    public static void shuffleElems(int[] array) {
+    public static int[] shuffleElems(int[] array, int countMixings) {
 
         if (array == null) {
-            return;
+            return new int[0];
         }
 
+        int[] mixingsArray = array.clone();
+
         Random r = new Random();
-        int countMixings = 100;
         int temp = 0;
         int indexFirstItem = 0;
         int indexSecondItem = 0;
 
         for (int i = 0; i < countMixings; ++i) {
 
-            indexFirstItem = r.nextInt(array.length - 1);
-            indexSecondItem = r.nextInt(array.length - 1);
+            indexFirstItem = r.nextInt(mixingsArray.length - 1);
+            indexSecondItem = r.nextInt(mixingsArray.length - 1);
 
-            temp = array[indexFirstItem];
-            array[indexFirstItem] = array[indexSecondItem];
-            array[indexSecondItem] = temp;
+            temp = mixingsArray[indexFirstItem];
+            mixingsArray[indexFirstItem] = mixingsArray[indexSecondItem];
+            mixingsArray[indexSecondItem] = temp;
         }
+
+        return mixingsArray;
     }
 }

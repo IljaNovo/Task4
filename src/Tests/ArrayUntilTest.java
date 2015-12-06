@@ -110,12 +110,27 @@ public class ArrayUntilTest {
     ////////////////////////////////////////////////////////////////////
 
     @Test
-    public void tesdfdtNullInParamsCompare() throws Exception {
+    public void testShuffleArray() throws Exception {
 
-        int[] arrayFirst = null;
+        // Я не смог придумать тест в котором не было бы 100%-го совпадения после премешки.
+        // Поэтому я взял больше чисел в массиве и увеличил количество перемешиваний.
 
-        int[] arraySecond = null;
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
-        assertFalse(ArrayUntil.compareArrays(arrayFirst, arraySecond));
+        int[] newArray = array.clone();
+
+        newArray = ArrayUntil.shuffleElems(newArray, 100);
+
+        assertTrue(ArrayUntil.compareArrays(array, newArray));
+    }
+
+    @Test
+    public void testNullInArray() throws Exception {
+
+        int[] array = null;
+
+        int[] mixingsArray = ArrayUntil.shuffleElems(array, 2);
+
+        assertTrue(mixingsArray.length == 0);
     }
 }
