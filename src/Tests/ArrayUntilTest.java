@@ -87,5 +87,35 @@ public class ArrayUntilTest {
 
     ////////////////////////////////////////////////////////////////////
 
+    @Test
+    public void testCompareNotIdenticalArrays() throws Exception {
 
+        int[] arrayFirst = {1, 2, 3, 4, 6};
+
+        int[] arraySecond = {2, 4, 5, 3, 1};
+
+        assertFalse(ArrayUntil.compareArrays(arrayFirst, arraySecond));
+    }
+
+    @Test
+    public void testNullInParamsCompare() throws Exception {
+
+        int[] arrayFirst = null;
+
+        int[] arraySecond = null;
+
+        assertFalse(ArrayUntil.compareArrays(arrayFirst, arraySecond));
+    }
+
+    ////////////////////////////////////////////////////////////////////
+
+    @Test
+    public void tesdfdtNullInParamsCompare() throws Exception {
+
+        int[] arrayFirst = null;
+
+        int[] arraySecond = null;
+
+        assertFalse(ArrayUntil.compareArrays(arrayFirst, arraySecond));
+    }
 }
