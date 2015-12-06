@@ -16,6 +16,22 @@ public class ArrayUntil {
         return newArrayElems;
     }
 
+    public static int[] extensionNumberElemsTo(int[] arrayElems, int count) {
+
+        if (arrayElems == null) {
+            return new int[0];
+        }
+        if (count < 0 || arrayElems.length >= count) {
+            return arrayElems;
+        }
+
+        int[] newArrayElems = new int[count];
+
+        copyValues(newArrayElems, arrayElems, arrayElems.length);
+
+        return newArrayElems;
+    }
+
     private static void copyValues(int[] arrayFirst, int[] arraySecond, int count) {
 
         if (arrayFirst == null || arraySecond == null || count < 0) {
