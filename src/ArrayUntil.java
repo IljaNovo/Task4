@@ -71,7 +71,7 @@ public class ArrayUntil {
         for(int i = 0; i < arrayFirst.length; ++i) {
             for (int j = 0; j < arraySecond.length; ++j) {
 
-                if (!viewedItems[j] && arrayFirst[i] == arraySecond[j]) {
+                if ( (!viewedItems[j]) && (arrayFirst[i] == arraySecond[j]) ) {
                     viewedItems[j] = true;
                     ++countSimilarItems;
                     break;
@@ -111,5 +111,18 @@ public class ArrayUntil {
         }
 
         return mixingsArray;
+    }
+
+    public static String print(int[] array) {
+
+        String answer = "";
+
+        for (int i = 0; i < array.length - 1; ++i) {
+            answer += String.format("array[%d] = %d;%n", i, array[i]);
+        }
+
+        answer += String.format("array[%d] = %d.", array.length - 1, array[array.length - 1]);
+
+        return answer;
     }
 }
