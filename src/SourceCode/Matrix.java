@@ -61,7 +61,7 @@ public class Matrix {
             for (int j = 0; j < right.sizeColumn(); ++j) {
                 for (int k = 0; k < left.sizeColumn(); ++k) {
 
-                    newItems += left.getItem(i, k) + right.getItem(k, j);
+                    newItems += left.getItem(i, k) * right.getItem(k, j);
                 }
 
                 answer.setItem(i, j, newItems);
