@@ -43,8 +43,6 @@ public class ArrayUntilTest {
         assertTrue(newArray.length == 5);
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-
     @Test
     public void testExtensionNumberElems() throws Exception {
 
@@ -107,13 +105,10 @@ public class ArrayUntilTest {
         assertFalse(ArrayUntil.compareArrays(arrayFirst, arraySecond));
     }
 
-    ////////////////////////////////////////////////////////////////////
-
     @Test
     public void testShuffleArray() throws Exception {
 
-        // Я не смог придумать тест в котором не было бы 100%-го совпадения после премешки.
-        // Поэтому я взял больше чисел в массиве и увеличил количество перемешиваний.
+        // Warning walking bag!
 
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
