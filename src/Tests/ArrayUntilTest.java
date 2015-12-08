@@ -83,8 +83,6 @@ public class ArrayUntilTest {
         assertTrue(newArray.length == 5);
     }
 
-    ////////////////////////////////////////////////////////////////////
-
     @Test
     public void testCompareNotIdenticalArrays() throws Exception {
 
@@ -128,6 +126,4 @@ public class ArrayUntilTest {
 
         assertTrue(mixingsArray.length == 0);
     }
-
-
 }
