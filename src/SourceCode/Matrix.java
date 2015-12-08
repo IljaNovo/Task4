@@ -1,39 +1,39 @@
 public class Matrix implements Cloneable {
 
-    int[][] matrix;
+    double[][] matrix;
 
     // добавить условие в констуктор при null в агрументе
 
     public Matrix(int rows, int columns) {
 
-        this.matrix = new int[rows][columns];
+        this.matrix = new double[rows][columns];
     }
 
-    public Matrix(int[][] matrix) {
+    public Matrix(double[][] matrix) {
 
         this.matrix = matrix;
     }
 
     public int sizeRow() {
 
-        return this.matrix[0].length;
+        return this.matrix.length;
     }
 
     public int sizeColumn() {
 
-        return this.matrix.length;
+        return this.matrix[0].length;
     }
 
     public Matrix clone() throws CloneNotSupportedException {
         return (Matrix)super.clone();
     }
 
-    public void setItem(int indexRow, int indexColumn, int value) {
+    public void setItem(int indexRow, int indexColumn, double value) {
 
         this.matrix[indexRow][indexColumn] = value;
     }
 
-    public int getItem(int indexRow, int indexColumn) {
+    public double getItem(int indexRow, int indexColumn) {
 
         return this.matrix[indexRow][indexColumn];
     }
@@ -41,7 +41,6 @@ public class Matrix implements Cloneable {
     public static Matrix adding(Matrix left, Matrix right) {
 
         if (left == null || right == null) {
-
             return new Matrix(0, 0);
         }
 
@@ -59,12 +58,11 @@ public class Matrix implements Cloneable {
 
     public static Matrix multiply(Matrix left, Matrix right) {
 
-        if ((left.sizeColumn() != right.sizeRow())) {
+        if (left == null || right == null) {
             return new Matrix(0, 0);
         }
 
-        if (left == null || right == null) {
-
+        if ((left.sizeColumn() != right.sizeRow())) {
             return new Matrix(0, 0);
         }
 
@@ -87,9 +85,11 @@ public class Matrix implements Cloneable {
         return answer;
     }
 
-    public int findDeterminant(Matrix matrix) {
+    public double findDeterminant() {
 
-        if (matrix == null || matrix.sizeRow() == 0) {
+        Matrix matrix = this;
+
+        if (matrix.sizeRow() == 0) {
             return 0;
         }
 
@@ -132,9 +132,9 @@ public class Matrix implements Cloneable {
         return newMatrix;
     }
 
-    private int findDeterminantSarryus() {
+    private double findDeterminantSarryus() {
 
-        int determinant = 0;
+        double determinant = 0;
 
         Matrix newMatrix = this.addTwoFirstColumns();
 
@@ -159,7 +159,7 @@ public class Matrix implements Cloneable {
 
     private void ChangeLine(int indexFirstLine, int indexSecondLine) {
 
-        int temp = 0;
+        double temp = 0;
 
         for (int i = 0; i < this.matrix[0].length; ++i) {
             temp = this.matrix[indexFirstLine][i];
@@ -184,7 +184,7 @@ public class Matrix implements Cloneable {
         return false;
     }
 
-    private int findDeterminantGauss() {
+    private double findDeterminantGauss() {
 
         Matrix triangularMatrix = null;
 
@@ -195,18 +195,18 @@ public class Matrix implements Cloneable {
             e.getStackTrace();
         }
 
-        triangularMatrix.makeStraightpPassage();
+        triangularMatrix.makeStraightPassage();
 
-        int determinant = 0;
+        double determinant = 1;
 
         for (int i = 0; i < triangularMatrix.sizeColumn(); ++i) {
-            determinant += triangularMatrix.getItem(i, i);
+            determinant *= triangularMatrix.getItem(i, i);
         }
 
         return  determinant;
     }
 
-    private void makeStraightpPassage() {
+    private void makeStraightPassage() {
 
         Matrix triangularMatrix = this;
 
@@ -227,14 +227,14 @@ public class Matrix implements Cloneable {
 
         Matrix triangularMatrix = this;
 
-        int coefficient = 0;
+        double coefficient = 0;
 
         for (int j = indexMainLine + 1; j < triangularMatrix.sizeRow(); ++j) {
 
             coefficient = triangularMatrix.getItem(j, indexMainLine) /
                     triangularMatrix.getItem(indexMainLine, indexMainLine);
 
-            for (int k = indexMainLine; j < triangularMatrix.sizeColumn(); ++k) {
+            for (int k = indexMainLine; k < triangularMatrix.sizeColumn(); ++k) {
                 triangularMatrix.setItem(j, k,
                         triangularMatrix.getItem(j, k) - triangularMatrix.getItem(indexMainLine, k) * coefficient);
             }
