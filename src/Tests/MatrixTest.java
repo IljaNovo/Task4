@@ -121,6 +121,8 @@ public class MatrixTest {
 
         Matrix matrix = new Matrix(initialData.clone());
 
+        double d = matrix.findDeterminant();
+
         assertTrue(Math.abs(matrix.findDeterminant() - 96.0) < 0.00001);
     }
 
