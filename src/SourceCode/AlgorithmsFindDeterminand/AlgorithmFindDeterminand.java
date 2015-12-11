@@ -1,3 +1,3 @@
 public interface AlgorithmFindDeterminand {
-    public int findDeterminand(Matrix matrix);
+    public double findDeterminand(Matrix matrix);
 }
