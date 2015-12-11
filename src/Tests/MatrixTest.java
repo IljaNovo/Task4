@@ -110,7 +110,7 @@ public class MatrixTest {
 
         Matrix matrix = new Matrix(initialData.clone());
 
-        assertTrue(Math.abs(matrix.findDeterminant() - 0.0) < 0.00001);
+        assertTrue(Math.abs(matrix.findDeterminant() - (-2.0)) < 0.00001);
     }
 
     @Test

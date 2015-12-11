@@ -106,10 +106,9 @@ public class Matrix implements Cloneable {
                 newMatrix.setItem(i, j, matrix[i][j]);
             }
         }
-        for (int i = matrix.length; i < newMatrix.sizeRow(); ++i) {
-            for (int j = 0; j < newMatrix.sizeColumn(); ++j) {
-
-                newMatrix.setItem(i, j, matrix[i - 3][j]);
+        for (int i = matrix[0].length; i < newMatrix.sizeColumn(); ++i) {
+            for (int j = 0; j < newMatrix.sizeRow(); ++j) {
+                newMatrix.setItem(j, i, matrix[j][i - 3]);
             }
         }
         return newMatrix;
@@ -118,19 +117,21 @@ public class Matrix implements Cloneable {
     private double findDeterminantSarryus() {
         double determinant = 0;
         Matrix newMatrix = this.addTwoFirstColumns();
-        int valueThreeParams = 0;
+        int valueThreeParams = 1;
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0, shift = 0; j < 3; ++j, ++shift) {
                 valueThreeParams *= newMatrix.getItem(j, i + shift);
             }
             determinant += valueThreeParams;
+            valueThreeParams = 1;
         }
         for (int i = 0; i < 3; ++i) {
             for (int j = 2, shift = 0; j >= 0; --j, ++shift) {
                 valueThreeParams *= newMatrix.getItem(j, i + shift);
             }
             determinant -= valueThreeParams;
+            valueThreeParams = 1;
         }
         return determinant;
     }

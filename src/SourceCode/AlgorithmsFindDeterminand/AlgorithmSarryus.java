@@ -24,16 +24,16 @@ public class AlgorithmSarryus implements AlgorithmFindDeterminand {
     private Matrix addTwoFirstColumns(Matrix matrix) {
         Matrix newMatrix = new Matrix(matrix.sizeRow(), matrix.sizeColumn() + 2);
 
-        for (int i = 0; i < matrix.sizeRow(); ++i) {
-            for (int j = 0; j < matrix.sizeColumn(); ++j) {
-
-                newMatrix.setItem(i, j, matrix.getItem(i, j));
-            }
-        }
-        for (int i = matrix.sizeRow(); i < newMatrix.sizeRow(); ++i) {
+        for (int i = 0; i < newMatrix.sizeRow(); ++i) {
             for (int j = 0; j < newMatrix.sizeColumn(); ++j) {
 
-                newMatrix.setItem(i, j, matrix.getItem(i - 3, j));
+                newMatrix.setItem(i, j, newMatrix.getItem(i, j));
+            }
+        }
+        for (int i = newMatrix.sizeColumn(); i < newMatrix.sizeColumn(); ++i) {
+            for (int j = 0; j < newMatrix.sizeRow(); ++j) {
+
+                newMatrix.setItem(j, i, newMatrix.getItem(j, i - 3));
             }
         }
         return newMatrix;
