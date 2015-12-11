@@ -2,12 +2,18 @@ public class Matrix implements Cloneable {
 
     private double[][] matrix;
 
-    public Matrix(int rows, int columns) {
-        // проверить на отрицательные индексы
+    public Matrix(int rows, int columns){
+        if (rows < 0 || columns < 0) {
+            throw new NegativeIndexOfMatrixExeption("Used negative indexs.");
+        }
         this.matrix = new double[rows][columns];
     }
 
     public Matrix(double[][] matrix) {
+        if (matrix == null) {
+            this.matrix = new double[1][1];
+            return;
+        }
         this.matrix = new double[matrix.length][matrix[0].length];
 
         for (int i = 0; i < this.matrix.length; ++i) {
@@ -33,13 +39,23 @@ public class Matrix implements Cloneable {
         return clone;
     }
 
-    // проверить индексы
     public void setItem(int indexRow, int indexColumn, double value) {
+        if (indexRow < 0 || indexColumn < 0) {
+            throw new NegativeIndexOfMatrixExeption("Used negative Indexs.");
+        }
+        if (indexRow > this.sizeRow() || indexColumn > this.sizeColumn()) {
+            throw new MatrixOfBoundExeption("Iindex outside the Matrix.");
+        }
         this.matrix[indexRow][indexColumn] = value;
     }
 
-    // првоерить индексы
     public double getItem(int indexRow, int indexColumn) {
+        if (indexRow < 0 || indexColumn < 0) {
+            throw new NegativeIndexOfMatrixExeption("Used negative Indexs.");
+        }
+        if (indexRow > this.sizeRow() || indexColumn > this.sizeColumn()) {
+            throw  new  MatrixOfBoundExeption("Iindex outside the Matrix.");
+        }
         return this.matrix[indexRow][indexColumn];
     }
 

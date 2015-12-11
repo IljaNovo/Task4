@@ -19,7 +19,6 @@ public class MatrixTest {
 
     @Test
     public void testSizeRow() throws Exception {
-
         Matrix matrix = new Matrix(5, 4);
         assertEquals(matrix.sizeRow(), 5);
     }
@@ -73,15 +72,11 @@ public class MatrixTest {
     public void testMultiply() throws Exception {
         double[][] matrix = {{1, 2},
                              {3, 4}};
-
         Matrix first = new Matrix(matrix.clone());
         Matrix second = new Matrix(matrix.clone());
-
         double[][] patternAnswer = {{7, 10},
                                     {15, 22}};
-
         Matrix answer = Matrix.multiply(first, second);
-
         boolean arraysEqual = true;
 
         for (int i = 0; i < answer.sizeRow(); ++i){
@@ -91,7 +86,6 @@ public class MatrixTest {
                 }
             }
         }
-
         assertTrue(arraysEqual);
     }
 
@@ -107,7 +101,6 @@ public class MatrixTest {
     public void testFindDeterminantSizeTwo() throws Exception {
         double[][] initialData = {{1, 2},
                                   {3, 4}};
-
         Matrix matrix = new Matrix(initialData.clone());
 
         assertTrue(Math.abs(matrix.findDeterminant() - (-2.0)) < 0.00001);
@@ -118,9 +111,7 @@ public class MatrixTest {
         double[][] initialData = {{5, 2, 3},
                                   {4, 6, 6},
                                   {-7, 8, 9}};
-
         Matrix matrix = new Matrix(initialData.clone());
-
         double d = matrix.findDeterminant();
 
         assertTrue(Math.abs(matrix.findDeterminant() - 96.0) < 0.00001);
@@ -132,9 +123,7 @@ public class MatrixTest {
                                   {-3, 2, 4, -6},
                                   {2, -5, -7, 5},
                                   {-4, 3, 5, -6}};
-
         Matrix matrix = new Matrix(initialData.clone());
-
         double det = matrix.findDeterminant();
 
         assertTrue(Math.abs(det - 18.0) < 0.1);
